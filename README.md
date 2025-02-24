@@ -12,6 +12,7 @@ Clustering is automatically scored using interpretable evaluation metrics.
 <details>
 <summary><b>Clustering evaluation details</b> 📊</summary>
 <br>
+
 Evaluation of clustering is difficult, with **notable disagreements between metrics** (see [10.1038/nmeth.3583](https://www.nature.com/articles/nmeth.3583)).
 In an elegant design, [10.1002/cyto.a.23030](https://onlinelibrary.wiley.com/doi/full/10.1002/cyto.a.23030) compared the performance of clustering algorithms on labelled cytometry data, by matching clusters to cell populations (labels) automatically.
 
