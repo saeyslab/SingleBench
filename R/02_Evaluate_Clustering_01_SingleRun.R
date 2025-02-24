@@ -10,6 +10,7 @@ DeployClustering_SingleRun <- function(
       n_param            = n_param,
       knn                = knn,
       exprs              = exprs,
+      seed               = seed,
       save_intermediates = TRUE,
       h5_path            = h5_path,
       idx.subpipeline    = idx.subpipeline,

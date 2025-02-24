@@ -90,12 +90,14 @@ print.WrapperWithParameters <- function(x, ...) {
 }
 
 fTrain.WrapperWithParameters <- function(w) {
-  function(input, n_param = NULL, n_param_name = NULL, knn = NULL, exprs = NULL) {
+  function(input, n_param = NULL, n_param_name = NULL, knn = NULL, exprs = NULL, seed = NULL) {
 
     if (!w$wrapper$uses_knn_graph)
       knn <- NULL
     if (!w$wrapper$uses_original_expression_matrix)
       exprs <- NULL
+    
+    seed_arg <- w$wrapper$random_seed_argument
     
     p <- list()
     p[['input']] <- input
@@ -105,6 +107,10 @@ fTrain.WrapperWithParameters <- function(w) {
     if (!is.null(n_param_name) && !is.null(n_param))
       params[[n_param_name]] <- n_param
     p[['params']] <- params
+    
+    if (!is.null(seed_arg) && !is.null(seed)) {
+      p[[seed_arg]] <- seed
+    }
     
     do.call(w$wrapper$train, p)
   }
@@ -169,9 +175,9 @@ print.Module <- function(x, ...) {
 }
 
 fTrain.Module <- function(m) {
-  function(input, n_param = NULL, knn = NULL, exprs = NULL) {
+  function(input, n_param = NULL, knn = NULL, exprs = NULL, seed = NULL) {
     f <- fTrain.WrapperWithParameters(m$wrapper_with_parameters)
-    f(input, n_param = n_param, n_param_name = m$n_param, knn = knn, exprs = exprs)
+    f(input, n_param = n_param, n_param_name = m$n_param, knn = knn, exprs = exprs, seed = seed)
   }
 }
 
@@ -258,7 +264,7 @@ fTrain.ModuleChain <- function(m) {
   ## train on the output of the previous module and extract the result to pass it on,
   ## until we get to the last module (then we return the model created by that module)
   
-  function(input, n_param = NULL, knn = NULL, exprs = NULL, save_intermediates = TRUE, h5_path = NULL, idx.subpipeline = NULL, idx.n_param = NULL, out.intermediates = NULL) {
+  function(input, n_param = NULL, knn = NULL, exprs = NULL, save_intermediates = TRUE, h5_path = NULL, idx.subpipeline = NULL, idx.n_param = NULL, seed = NULL, out.intermediates = NULL) {
     
     if (!is.null(out.intermediates)) {
       intermediates <- vector(mode = 'list', length = n_modules - 1)

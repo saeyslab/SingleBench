@@ -40,6 +40,7 @@ DeployClustering_Bootstrap <- function(
           n_param = n_param,
           knn     = knn,
           exprs   = exprs,
+          seed    = seed + idx_iter - 1,
           save_intermediates = TRUE,
           h5_path = h5_path,
           idx.subpipeline    = idx.subpipeline,
@@ -88,6 +89,7 @@ DeployClustering_Bootstrap <- function(
           n_param = n_param,
           knn     = knn,
           exprs   = exprs,
+          seed    = seed + idx_iter - 1,
           save_intermediates = TRUE,
           h5_path = h5_path,
           out.intermediates  = if (!is.null(out.intermediates)) intermediates else NULL

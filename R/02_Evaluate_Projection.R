@@ -70,9 +70,9 @@ EvalProjection <- function(
           if (length(n_param_range) > 0) { # if there are any unevaluated n-parameter iterations left...
             
             ## Get model-building functions
-            train <- fTrain.ModuleChain(proj)
+            train   <- fTrain.ModuleChain(proj)
             extract <- fExtract.ModuleChain(proj)
-            map <- fMap.ModuleChain(proj)
+            map     <- fMap.ModuleChain(proj)
             
             ## Retrieve input expression data (and k-NNG if needed)
             exprs <- GetExpressionMatrix(benchmark)
@@ -175,6 +175,7 @@ DeployProjection <- function(
         n_param            = n_param,
         knn                = knn,
         exprs              = exprs,
+        seed               = seed,
         save_intermediates = TRUE,
         h5_path            = h5_path,
         idx.subpipeline    = idx.subpipeline,
