@@ -10,8 +10,8 @@ It makes it easy to **test the stability of a workflow**, **run parameter sweeps
 Clustering is automatically scored using interpretable evaluation metrics.
 
 <details>
-<summary>**Clustering evaluation details** 📊</summary>
-
+<summary><b>Clustering evaluation details</b> 📊</summary>
+<br>
 Evaluation of clustering is difficult, with **notable disagreements between metrics** (see [10.1038/nmeth.3583](https://www.nature.com/articles/nmeth.3583)).
 In an elegant design, [10.1002/cyto.a.23030](https://onlinelibrary.wiley.com/doi/full/10.1002/cyto.a.23030) compared the performance of clustering algorithms on labelled cytometry data, by matching clusters to cell populations (labels) automatically.
 
@@ -41,7 +41,8 @@ The following clustering evaluation metrics are computed by *SingleBench*:
 Some of the reasons you should use *SingleBench*:
 
 <details>
-<summary>**Interpretability of clustering for discovery of new cell types** 👩‍🔬</summary>
+<summary><b>Interpretability of clustering for discovery of new cell types</b> 👩‍🔬</summary>
+<br>
 
 Automated clustering of cell types is used massively for discovery in cytometry, scRNA-seq and other single-cell data.
 Leveraging annotations of known cell populations, *SingleBench* gives a **complex picture of how labels match up with clusters, using multiple matching schemes**.
@@ -51,7 +52,8 @@ This not only evaluates quality of the clustering, but helps discover new subpop
 </details>
 
 <details>
-<summary>**Saving up on time and RAM** ⌚</summary>
+<summary><b>Saving up on time and RAM</b> ⌚</summary>
+<br>
 
 Implementing a **lightweight workflow management system**, intermediate results are saved using [*rhdf5*](https://www.bioconductor.org/packages/release/bioc/html/rhdf5.html) and recycled.
 This **frees up memory, decreases running time and prevents data loss**.
@@ -63,7 +65,8 @@ Additionally, algorithms relying on *k*-nearest-neighbour graphs (*k*-NNGs) can 
 </details>
 
 <details>
-<summary>**Extensibility** 🧩</summary>
+<summary><b>Extensibility</b> 🧩</summary>
+<br>
 
 Denoising, embedding and clustering algorithms in R/Python are integrated via **wrappers**, which have some minimal formal requirements.
 New wrappers can easily be added, with instructions and examples provided.
@@ -72,7 +75,8 @@ New wrappers can easily be added, with instructions and examples provided.
 </details>
 
 <details>
-<summary>**Early detection of errors** ‼️</summary>
+<summary><b>Early detection of errors</b> ‼️</summary>
+<br>
 
 When designing a workflow, *SingleBench* runs **validity checks** to detect potential errors before execution.
 These sanity checks help detect mistakes more easily and save time.
@@ -95,7 +99,8 @@ If planning to call Python tools from *SingleBench*, you will need [*reticulate*
 ## Usage
 
 <details>
-<summary>**Session info for reproducibility of *Usage* section**</summary>
+<summary><b>Session info for reproducibility of <i>Usage</i> section</b></summary>
+<br>
 
 ```r
 R version 4.3.3 (2024-02-29)
@@ -246,8 +251,8 @@ Evaluate(b, verbose = TRUE) # specify `n_cores` for parallel processing
 With `verbose = TRUE`, progress messages are shown during evaluation.
 
 <details>
-<summary>**2-d embedding for visualisation** (OPTIONAL)</summary>
-
+<summary><b>2-d embedding for visualisation</b> (OPTIONAL)</summary>
+<br>
 A 2-dimensional embedding can help view the data and results.
 Some dimensionality reduction (DR) tool wrappers are provided by default for this purpose.
 To generate a layout and bind it to the data:
@@ -264,7 +269,8 @@ A read-out summarising results of an evaluated benchmark can be printed using `p
 Dedicated functions are provided for extracting data and results in numeric form.
 
 <details>
-<summary>**Extractor functions**</summary>
+<summary><b>Extractor functions</b></summary>
+<br>
 
 * `GetExpressionMatrix` for single-cell expression values
 * `GetProjection` for output of the projection module
