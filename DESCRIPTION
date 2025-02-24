@@ -1,0 +1,43 @@
+Package: SingleBench
+Type: Package
+Title: Evaluation framework for exploratory modelling in cytometry
+Version: 1.0
+Date: 2025-02-22
+Author: David Novak
+Maintainer: David Novak <davidnovak9000@gmail.com>
+Imports:
+  RcppHNSW,
+  tidyverse,
+  ggtext,
+  pheatmap,
+  iterators,
+  matrixStats,
+  rhdf5,
+  SummarizedExperiment,
+  crayon,
+  clusterSim,
+  clue,
+  coRanking,
+  scattermore,
+  flowCore,
+  kableExtra,
+  gridExtra,
+  cowplot,
+  aricode,
+  Hmisc
+Suggests:
+  reticulate,
+  ivis,
+  destiny,
+  foreach,
+  parallel,
+  doParallel,
+  HDCytoData,
+  Rphenograph,
+  Rtsne,
+  uwot,
+  FlowSOM
+Description: SingleBench is an R framework for optimising exploratory workflows for cytometry data.
+License: MIT
+RoxygenNote: 7.3.1
+Roxygen: list(markdown = TRUE)
