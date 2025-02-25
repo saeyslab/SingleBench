@@ -29,6 +29,21 @@ PlotNParameterMap_Clustering <- function(
   npar_proj_variable <- !is.null(npar_proj) && length(unique(vals[[npar_proj]])) > 1
   npar_clus_variable <- !is.null(npar_clus) && length(unique(vals[[npar_clus]])) > 1
   
+  if (npar_proj_variable) {
+    v <- vals[[npar_proj]]
+    if (any(is.na(v))) {
+      v[is.na(v)] <- 'NA'
+      vals[, npar_proj] <- relevel(as.factor(v), ref = 'NA')
+    } 
+  }
+  if (npar_clus_variable) {
+    v <- vals[[npar_clus]]
+    if (any(is.na(v))) {
+      v[is.na(v)] <- 'NA'
+      vals[, npar_clus] <- relevel(as.factor(v), ref = 'NA')
+    } 
+  }
+  
   single_run <- 'Value' %in% colnames(vals)
   
   suppressWarnings({
