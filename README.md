@@ -95,7 +95,16 @@ devtools::install_github('davnovak/SingleBench')
 > [!NOTE]
 > Individual denoising, embedding or clustering methods might need to be installed separately.
 
-If planning to call Python tools from *SingleBench*, you will need [*reticulate*](https://rstudio.github.io/reticulate/) and [*Anaconda*](https://www.anaconda.com).
+<details>
+<summary><b>Interfacing with Python</b></summary>
+<br>
+
+If planning to call Python tools from *SingleBench*, you will need to install [*reticulate*](https://rstudio.github.io/reticulate/) and make sure required Python modules are available in an environment that *reticulate* can work with.
+This means that the environment can be loaded with `reticulate::use_condaenv` or `reticulate::use_virtualenv`, or that the use of the correct Python binary can be forced by specifying `Sys.setenv(RETICULATE_PYTHON=path_to_python_binary)` from within R before loading *reticulate*.
+
+If you need to switch between multiple Anaconda environments from within the same R session, try [*RCondaRun*](https://github.com/davnovak/RCondaRun).
+
+</details>
 
 ## Usage
 
@@ -167,7 +176,7 @@ pipeline[[1]] <-
  
 Here, `Fix` assigns fixed values of input parameters
 For `smooth`, `k` (neighbourhood size) is fixed at 100 and `n_iter` (number of iterations) at 1.
-Both `grid_width` and `grid_height` (SOM dimensionse) are fixed at 10 for `FlowSOM`.
+Both `grid_width` and `grid_height` (SOM dimensions) are fixed at 10 for `FlowSOM`.
 
 Any `Module` can specify an **optional *variable numeric parameter*: *n*-parameter**.
 Here, `lam` (denoising strength coefficient) of `Smooth` and `n_clusters` (number of resulting metaclusters) of `FlowSOM` are assigned as variable.
