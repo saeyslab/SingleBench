@@ -855,7 +855,7 @@ GetClusteringScoringTable <- function(
         'Mean Value' = means_by_npar$value,
         'Standard Deviation' = sd_by_npar$value
       )
-      colnames(vals_by_npar)[1:2] <- c(npar_proj, npar_clus)
+      colnames(vals_by_npar)[1:2] <- c(paste0('PROJECTION_', npar_proj), paste0('CLUSTERING_', npar_clus))
       idcs_keep <- apply(vals_by_npar, 2, function(x) !all(is.na(x)))
       vals_by_npar <- vals_by_npar[idcs_keep]
     }
