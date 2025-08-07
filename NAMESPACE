@@ -12,7 +12,8 @@ importFrom(
   "geom_bar", "coord_flip", "scale_fill_manual", "scale_fill_gradient", "geom_text",
   "geom_point", "geom_line", "geom_tile", "geom_errorbar", "labs", "xlab", "ylab",
   "guides", "guide_legend", "scale_x_discrete", "ggtitle", "theme", "theme_minimal",
-  "theme_dark", "theme_grey", "facet_wrap", "geom_vline", "geom_hline", "scale_color_manual", "scale_color_gradient"
+  "theme_dark", "theme_grey", "facet_wrap", "geom_vline", "geom_hline", "scale_color_manual", "scale_color_gradient",
+  "scale_y_discrete", "element_text"
 )
 export("WrapTool")
 export("Fix")

@@ -227,9 +227,9 @@
 #' @export
 PlotSimilarityHeatmap <- PlotJaccardHeatmap <- function(
   benchmark,
-  idx.subpipeline,
-  idx.n_param,
-  idx.run,
+  idx.subpipeline = 1,
+  idx.n_param = NULL,
+  idx.run = 1,
   pheatmap_args = list()
 ) {
   
