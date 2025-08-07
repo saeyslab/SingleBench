@@ -6,7 +6,7 @@
 \usage{
 WhatIs(
   benchmark,
-  idx.subpipeline = NULL,
+  idx.subpipeline = 1,
   idx.n_param = NULL,
   idx.run = 1,
   cluster = NULL,

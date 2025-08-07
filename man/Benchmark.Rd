@@ -192,7 +192,7 @@ Alternatively, instead of computing a scoring matrix for the penalties automatic
 This scoring matrix will then be used directly and will override any other paramters of the model.
 }
 
-\section{wi00oh8E4nW9CCb7xiFICn5CMUi60YOx-49--NN matrix construction}{
+\section{LLwHcPIL5axNGZiplTjLPngg3mUioiRP-49--NN matrix construction}{
 Various dimension-reduction or denoising algorithms may require the construction of a \emph{k}-nearest-neighbour graph.
 If any of them are included in the pipeline, a single \code{k}-NN matrix will be constructed at the start of evaluation.
 You can specify \code{k} (neighbour count) for k-NNG construction and the distance metric as \code{knn.k} and \code{knn.distance}
