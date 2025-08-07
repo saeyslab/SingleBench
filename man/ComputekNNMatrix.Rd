@@ -20,5 +20,5 @@ list with two slots: \code{Indices} contains a matrix of nearest neighbours to e
 }
 \description{
 Finds \code{k} closest neighbours to each point in high-dimensional space and the distances to these points.
-The  approximate k-NN search algorith, from \code{RcppHNSW} is used.
+The approximate k-NN search algorith from \code{RcppHNSW} is used.
 }

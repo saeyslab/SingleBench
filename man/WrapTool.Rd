@@ -16,10 +16,11 @@ WrapTool(
   fun.apply_model.single_input = NULL,
   fun.apply_model.batch_input = NULL,
   fun.apply_model = NULL,
-  prevent_parallel_execution = TRUE,
+  prevent_parallel_execution = FALSE,
   use_python = !is.null(python_modules) && length(python_modules) > 0,
   use_original_expression_matrix = FALSE,
-  use_knn_graph = FALSE
+  use_knn_graph = FALSE,
+  random_seed_argument = NULL
 )
 }
 \arguments{

@@ -43,13 +43,13 @@ EvalClustering <- function(
         
         n_iter <- benchmark$stability.n_iter
         n_cores <- benchmark$n_cores
-        parallelise <- all(purrr::map_lgl(clus$modules, function(x) !x$wrapper_with_parameters$wrapper$prevent_parallel_execution))
+        parallelise <- !is.null(benchmark$n_cores) && all(purrr::map_lgl(clus$modules, function(x) !x$wrapper_with_parameters$wrapper$prevent_parallel_execution))
         
         if (no_parallelisation)
           parallelise <- FALSE
         
         ## Get expression matrix and k-NNG (if needed)
-        exprs <- GetExpressionMatrix(benchmark)
+        exprs <- GetExpressionMatrix(benchmark, concatenate = TRUE)
         knn <- if (clus$uses_knn_graph) GetkNNMatrix(benchmark) else NULL
         
         n_param_range <- seq_along(n_param_values)
@@ -70,6 +70,9 @@ EvalClustering <- function(
             
             n_param <- if (no_npar || npar_proj) NULL else n_param_values[idx.n_param]
             input <- GetClusteringInput(benchmark, idx.subpipeline, idx.n_param = if (no_npar) NULL else idx.n_param)
+            if (is.null(input)) {
+              input <- exprs
+            }
             this_exprs <- if (clus$uses_original_expression_matrix) exprs else NULL
             
             res <-
@@ -106,7 +109,7 @@ EvalClustering <- function(
             ## Compute cluster medians
             
             exprs <- GetExpressionMatrix(benchmark, concatenate = TRUE)
-            codes <- GetClustering(benchmark, idx.subpipeline, idx.n_param, idx.run = 1)
+            codes <- GetClustering(benchmark, idx.subpipeline, idx.n_param, idx.run = 1, concatenate = TRUE)
             codes <- factor(codes, levels = sort(unique(codes)))
             
             meds <-

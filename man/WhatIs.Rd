@@ -14,7 +14,8 @@ WhatIs(
   marker1 = NULL,
   marker2 = NULL,
   pointsize_bg = 0.7,
-  pointsize_fg = 1.2
+  pointsize_fg = 1.2,
+  exprs = NULL
 )
 }
 \arguments{

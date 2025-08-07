@@ -27,11 +27,14 @@ WhatIs <- function(
   marker1 = NULL,
   marker2 = NULL,
   pointsize_bg = 0.7,
-  pointsize_fg = 1.2
+  pointsize_fg = 1.2,
+  exprs = NULL
 ) {
   .WhatIs.ValidityChecks(environment())
 
-  exprs <- GetExpressionMatrix(benchmark, concatenate = TRUE)[, benchmark$column_names]
+  if (is.null(exprs)) {
+    exprs <- GetExpressionMatrix(benchmark, concatenate = TRUE)[, benchmark$column_names]
+  }
   
   if (!is.null(cluster)) {
     
@@ -61,10 +64,10 @@ WhatIs <- function(
     stopifnot(marker2%in%colnames(exprs))
     
     res <- ggplot() +
-      theme_dark() +
+      theme_minimal() +
       scattermore::geom_scattermost(
         xy = exprs[, c(marker1, marker2)],
-        color = 'white',pointsize=pointsize_bg
+        color = 'darkgrey',pointsize=pointsize_bg
       ) +
       scattermore::geom_scattermost(
         xy = exprs[mask, c(marker1, marker2)],
@@ -95,7 +98,7 @@ WhatIs <- function(
     p_par <- ggplot() +
       scattermore::geom_scattermost(
         xy = cbind(dfull$value, dfull$idx),
-        color = 'white',
+        color = 'darkgrey',
         pointsize = pointsize_bg
       ) +
       scattermore::geom_scattermost(
@@ -105,7 +108,7 @@ WhatIs <- function(
       ) +
       scale_y_discrete('Parameter', limits = m) +
       ylab('Signal') +
-      theme_dark() +
+      theme_minimal() +
       theme(axis.text.x = element_text(vjust = 0.5, hjust = 0))
     
     cor <- Hmisc::rcorr(exprs[mask, rev(m)], type = 'spearman')

@@ -199,7 +199,12 @@ GatherInput_flowSet <- function(
   verbose
 ) {
   
-  ## Resolve indices of feaures to use in analysis and to transform
+  if (!is.null(input_marker_types)) {
+    mi <- input[[1]]@description$MARKER_INFO
+    input <- input[, mi$marker_name[mi$marker_class%in%input_marker_types]]
+  }
+  
+  ## Resolve indices of features to use in analysis and to transform
   if (!is.null(input_features))
     input_features <- ResolveFeatureIndices(input_features, colnames(input), flowCore::markernames(input))
   if (!is.null(transform_features))

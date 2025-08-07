@@ -3,6 +3,9 @@
   if (!is.null(e$cluster) && is.null(e$idx.subpipeline)) {
     stop('For retrieving a cluster, "idx.subpipeline" must be given')
   }
+  if (is.null(e$cluster) && is.null(e$population)) {
+    stop('Either "cluster" or "population" must be given')
+  }
 }
 
 .Plot.ValidityChecks <- function(e) {

@@ -39,7 +39,7 @@ Evaluate_ComputekNNMatrix <- function(
 #' Compute a \code{k}-nearest-neighbour matrix for expression data
 #'
 #' Finds \code{k} closest neighbours to each point in high-dimensional space and the distances to these points.
-#' The  approximate k-NN search algorith, from \code{RcppHNSW} is used.
+#' The approximate k-NN search algorith from \code{RcppHNSW} is used.
 #' 
 #' @param exprs numeric matrix: a coordinate matrix of biological expression data (columns correspond to markers, rows correspond to cells)
 #' @param k integer: number of nearest neighbours to find for each point (not including self)

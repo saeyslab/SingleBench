@@ -23,8 +23,8 @@ PlotNParameterMap_Clustering <- function(
   
   vals <- GetClusteringScoringTable(benchmark, idx.subpipeline)
   n_param_names  <- GetNParameterNames(benchmark, idx.subpipeline)
-  npar_proj <- n_param_names$projection
-  npar_clus <- n_param_names$clustering
+  npar_proj <- paste0('PROJECTION_', n_param_names$projection)
+  npar_clus <- paste0('CLUSTERING_', n_param_names$clustering)
   
   npar_proj_variable <- !is.null(npar_proj) && length(unique(vals[[npar_proj]])) > 1
   npar_clus_variable <- !is.null(npar_clus) && length(unique(vals[[npar_clus]])) > 1
@@ -33,14 +33,16 @@ PlotNParameterMap_Clustering <- function(
     v <- vals[[npar_proj]]
     if (any(is.na(v))) {
       v[is.na(v)] <- 'NA'
-      vals[, npar_proj] <- relevel(as.factor(v), ref = 'NA')
+      v <- factor(v, levels = c('NA', unique(as.integer(as.character(v[v!='NA'])))))
+      vals[, npar_proj] <- v
     } 
   }
   if (npar_clus_variable) {
     v <- vals[[npar_clus]]
     if (any(is.na(v))) {
       v[is.na(v)] <- 'NA'
-      vals[, npar_clus] <- relevel(as.factor(v), ref = 'NA')
+      v <- factor(v, levels = c('NA', unique(as.integer(as.character(v[v!='NA'])))))
+      vals[, npar_clus] <- v
     } 
   }
   
